@@ -7,9 +7,9 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const indexRouter = require("./routes/index");
 
-app.use(morgan("combined"));
-
 app.use(express.static("public"));
+
+app.use(morgan("combined"));
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");

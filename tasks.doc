@@ -1,0 +1,18 @@
+A   security 
+
+1: JWT                                     DONE
+2: validator      
+3: SSL
+4: http >< https
+5: proxy server 
+
+
+B   features
+
+1: send a message to client from server 
+2: response unauthorized (401) 
+
+
+C   others
+
+1: web socket

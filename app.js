@@ -1,7 +1,7 @@
 const express = require("express");
 const { engine } = require("express-handlebars");
 const morgan = require("morgan");
-const connectDB = require("../backend_profect/controllers/server");
+const connectDB = require("../backend_project/controllers/server");
 const app = express();
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");

@@ -22,14 +22,21 @@ router.post("/", async (req, res) => {
       email: req.body.email,
     });
     if (!existedField) {
-      res.redirect("/login");
-      return res.alert("Your account does not exist, you can create one below");
+      return res.send(`
+      <script>
+        window.location.href = '/login';
+        alert("email not found");
+      </script>`)
     }
     const isValidPassword = await existedField.isValidPassword(
       req.body.password
     );
     if (!isValidPassword) {
-      return res.sendStatus(401);
+      return res.send(`
+      <script>
+        window.location.href = '/login';
+        alert("password incorrect);
+      </script>`)
     }
 
     const accessToken = jwt.sign(

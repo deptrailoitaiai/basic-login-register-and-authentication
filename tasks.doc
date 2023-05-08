@@ -1,16 +1,17 @@
 A   security 
 
 1: JWT                                                                        DONE
-2: validator      
-3: SSL
+2: validator                                                                  DONE
+3: SSL                                                                      
 4: http >< https
 5: proxy server 
+6: http status code                        
 
 
 B   features
 
-1: send a message to client from server 
-2: response unauthorized (401) 
+1: send a message to client from server                                       DONE
+2: response unauthorized (401)                                                DONE
 
 
 C   others

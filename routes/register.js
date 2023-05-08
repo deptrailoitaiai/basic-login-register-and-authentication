@@ -4,6 +4,7 @@ const app = express();
 const router = express.Router();
 const bodyParser = require("body-parser");
 const maincollections = require("../models/maincollections");
+const validator = require("validator");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -22,12 +23,26 @@ router.post("/", async (req, res) => {
       password: req.body.password,
     });
     console.log(newUser);
+
+    const validatorVerify = await validator.isEmail(req.body.email);
+    if(!validatorVerify) return res.send(`
+    <script>
+      alert("invalid email");
+    </script>
+    `)
+     
     await newUser.save();
     console.log("data saved");
     res.redirect("/login");
   } catch (err) {
-    console.log(err);
-    res.redirect("/register");
+    if(err.code === 11000){
+      return res.send(`
+      <script>
+        alert("email existed");
+        window.location.href = '/register';
+      </script>
+      `)
+    }
   }
 });
 

@@ -25,16 +25,18 @@ router.post("/", async (req, res) => {
     console.log(newUser);
 
     const validatorVerify = await validator.isEmail(req.body.email);
-    if(!validatorVerify) return res.send(`
-    <script>
-      alert("invalid email");
-    </script>
-    `)
+    if(!validatorVerify){
+      return res.send(`
+      <script>
+        alert("invalid email address");
+      </script>`)
+    }
      
     await newUser.save();
     console.log("data saved");
     res.redirect("/login");
   } catch (err) {
+
     if(err.code === 11000){
       return res.send(`
       <script>
@@ -43,6 +45,7 @@ router.post("/", async (req, res) => {
       </script>
       `)
     }
+
   }
 });
 

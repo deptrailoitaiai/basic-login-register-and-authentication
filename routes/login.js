@@ -28,6 +28,7 @@ router.post("/", async (req, res) => {
         alert("email not found");
       </script>`)
     }
+    
     const isValidPassword = await existedField.isValidPassword(
       req.body.password
     );

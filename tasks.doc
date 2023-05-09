@@ -2,10 +2,11 @@ A   security
 
 1: JWT                                                                        DONE
 2: validator                                                                  DONE
-3: SSL                                                                      
-4: http >< https
-5: proxy server 
-6: http status code                        
+3: SSL/TLS                                                                    need to be integrated into prject           
+4: http >< https                                                              https = http + SSL      
+5: proxy server                                                               DONE                                          
+6: http status code     
+7: session                    
 
 
 B   features
@@ -17,3 +18,8 @@ B   features
 C   others
 
 1: web socket
+2: fetch 
+3: axios 
+4: advanced API (restful API)
+4: CI/CD
+5: ajax

@@ -12,7 +12,7 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 
 router.get("/", (req, res) => {
-  res.render("register");
+  res.status(200).render("register");
 });
 
 router.post("/", async (req, res) => {
@@ -25,27 +25,25 @@ router.post("/", async (req, res) => {
     console.log(newUser);
 
     const validatorVerify = await validator.isEmail(req.body.email);
-    if(!validatorVerify){
-      return res.send(`
+    if (!validatorVerify) {
+      return res.status(400).send(`
       <script>
         alert("invalid email address");
-      </script>`)
+      </script>`);
     }
-     
+
     await newUser.save();
     console.log("data saved");
-    res.redirect("/login");
+    res.redirect("login");
   } catch (err) {
-
-    if(err.code === 11000){
-      return res.send(`
+    if (err.code === 11000) {
+      return res.status(400).send(`
       <script>
         alert("email existed");
         window.location.href = '/register';
       </script>
-      `)
+      `);
     }
-
   }
 });
 

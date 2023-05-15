@@ -5,8 +5,8 @@ A   security
 3: SSL/TLS                                                                    need to be integrated into prject           
 4: http >< https                                                              https = http + SSL      
 5: proxy server                                                               DONE                                          
-6: http status code     
-7: session                    
+6: http status code                                                           DONE                                                  
+7: session or JWT                                                             DONE
 
 
 B   features
@@ -20,6 +20,10 @@ C   others
 1: web socket
 2: fetch 
 3: axios 
-4: advanced API (restful API)
-4: CI/CD
+4: advanced API (restful API) 
+4: CI/CD - devOps 
 5: ajax
+6: RasPi
+7: POSIX                                                                      DONE
+8: query language performance optimization                                    DONE
+

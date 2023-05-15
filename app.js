@@ -6,6 +6,7 @@ const app = express();
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const indexRouter = require("./routes/index");
+const initialPage = require("./routes/initialPage");
 
 app.use(express.static("public"));
 
@@ -16,10 +17,11 @@ app.set("view engine", "handlebars");
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use("/", initialPage);
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use("/auth", indexRouter);
 
 app.listen(3000, () => {
-  console.log("listening at http://localhost:3000/login");
+  console.log("listening at http://localhost:3000");
 });

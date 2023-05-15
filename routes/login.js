@@ -8,12 +8,15 @@ const maincollections = require("../models/maincollections");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+app.engine("handlebars", engine());
+app.set("view engine", "handlebars");
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 router.use(cookieParser());
 
 router.get("/", (req, res) => {
-  res.render("login");
+  res.status(200).render("login");
 });
 
 router.post("/", async (req, res) => {
@@ -22,22 +25,22 @@ router.post("/", async (req, res) => {
       email: req.body.email,
     });
     if (!existedField) {
-      return res.send(`
+      return res.status(401).send(`
       <script>
         window.location.href = '/login';
         alert("email not found");
-      </script>`)
+      </script>`);
     }
-    
+
     const isValidPassword = await existedField.isValidPassword(
       req.body.password
     );
     if (!isValidPassword) {
-      return res.send(`
+      return res.status(401).send(`
       <script>
         window.location.href = '/login';
         alert("password incorrect);
-      </script>`)
+      </script>`);
     }
 
     const accessToken = jwt.sign(
